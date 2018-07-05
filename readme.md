@@ -2,13 +2,13 @@
 
 **Steps**
 
-* Using Web Console create a new-app with name `app-a` pointing to his gitrepo. Go to advanced options and uncheck the route creation option so that the app does not create a route. We will add the route later.
-* Add a route by clicking on the `Create Route` option next to service `app-a`. Give a common name for the route as it will the frontend for multiple versions of the application, _e.g._ appab-abdemo.apps.testv3.osecloud.com
-*  Annotate the route to use `roundrobin` load balancing method.
+* Using the web console, create a new-app with the name `app-a` pointing to a gitrepo. Go to `Advanced Options` and uncheck the route creation option so that the app does not create a route. A custom route will be added in the next step.
+* Add a route by clicking on the `Create Route` option next to service `app-a`. Give a common name for the route as it will a frontend for multiple versions of the application, _e.g._ `appab-abdemo.apps.testv3.osecloud.com`
+*  Annotate the route to use `roundrobin` load balancing method with the following command:
 
-``` 
-oc annotate route/appab haproxy.router.openshift.io/balance=roundrobin
-```
+  ``` 
+  oc annotate route/appab haproxy.router.openshift.io/balance=roundrobin
+  ```
 
 * Test your app and check the results. Run `curl` in a loop and notice the output "VERSION 1".
 
